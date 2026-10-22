@@ -1,23 +1,175 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aurora PS4 — Protótipo</title><link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101510">
+  <meta name="description" content="Aurora PS4 — dashboard gamer experimental">
+  <title>Aurora PS4 | Game Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-<div class="shell">
-<header><div class="logo"><span>A</span> AURORA <b>PS4</b></div><nav><button class="active" data-view="início">Início</button><button data-view="jogos">Jogos</button><button data-view="favoritos">Favoritos</button><button data-view="categorias">Categorias</button><button data-view="configurações">Configurações</button></nav><div class="status"><i></i> PROTÓTIPO <time id="clock">00:00</time></div></header>
-<section class="intro"><div><small class="eyebrow">DASHBOARD • CONCEITO</small><h1 id="title">Sua biblioteca,<br><em>do seu jeito.</em></h1><p id="subtitle">Um novo ponto de partida para sua coleção de jogos.</p></div><div class="stats"><div><small>NA BIBLIOTECA</small><strong>06</strong></div><div><small>FAVORITOS</small><strong id="favcount">02</strong></div></div></section>
-<section class="feature"><div class="hero"><div class="planet"></div><div class="herotext"><label>DESTAQUE DA SEMANA</label><small>UMA AVENTURA ORIGINAL</small><h2>NEON<br><em>FRONTIER</em></h2><p>Explore um mundo além das estrelas.</p></div><span class="counter">CONCEITO<br><b>01 / 06</b></span></div><aside><small class="eyebrow">ESCOLHA RÁPIDA</small><h3>Continue explorando</h3><button class="quick" data-game="Neon Frontier"><span class="mini neon">NF</span><span><b>Neon Frontier</b><small>Aventura • Conceito</small></span><strong>▶</strong></button><button class="quick" data-game="Pixel Run"><span class="mini pixel">PR</span><span><b>Pixel Run</b><small>Arcade • Conceito</small></span><strong>▶</strong></button><button class="quick" data-game="Rota 9"><span class="mini route">09</span><span><b>Rota 9</b><small>Corrida • Conceito</small></span><strong>▶</strong></button></aside></section>
-<section class="library"><div class="libraryhead"><div><small class="eyebrow">SUA COLEÇÃO</small><h3 id="librarytitle">Jogos em destaque</h3></div><div class="tools"><input id="search" placeholder="Buscar jogo..." aria-label="Buscar jogo"><button id="all">VER TODOS ↗</button></div></div>
-<div class="grid" id="grid">
-<button class="game selected" data-name="Neon Frontier" data-cat="Aventura" data-fav="true"><span class="cover neon"><b>NF</b><small>NEON<br>FRONTIER</small></span><span class="meta"><b>Neon Frontier</b><small>Aventura</small></span><span class="heart">♥</span></button>
-<button class="game" data-name="Sombras" data-cat="Ação" data-fav="false"><span class="cover shadow"><b>SH</b><small>SOMBRAS</small></span><span class="meta"><b>Sombras</b><small>Ação • Conceito</small></span><span class="heart">♡</span></button>
-<button class="game" data-name="Rota 9" data-cat="Corrida" data-fav="true"><span class="cover route"><b>09</b><small>ROTA 9</small></span><span class="meta"><b>Rota 9</b><small>Corrida • Conceito</small></span><span class="heart">♥</span></button>
-<button class="game" data-name="Pixel Run" data-cat="Arcade" data-fav="false"><span class="cover pixel"><b>PR</b><small>PIXEL RUN</small></span><span class="meta"><b>Pixel Run</b><small>Arcade • Conceito</small></span><span class="heart">♡</span></button>
-<button class="game" data-name="Guardiões" data-cat="Fantasia" data-fav="false"><span class="cover guard"><b>G</b><small>GUARDIÕES</small></span><span class="meta"><b>Guardiões</b><small>Fantasia • Conceito</small></span><span class="heart">♡</span></button>
-<button class="game" data-name="Cidade Neon" data-cat="Ação" data-fav="false"><span class="cover city"><b>NC</b><small>CIDADE<br>NEON</small></span><span class="meta"><b>Cidade Neon</b><small>Ação • Conceito</small></span><span class="heart">♡</span></button>
-</div><p id="empty" hidden>Nenhum jogo encontrado nesta seção.</p></section>
-<footer><span><b class="key">X</b> SELECIONAR <b class="key">○</b> VOLTAR</span><span>PROTÓTIPO VISUAL • NÃO É UM PKG</span></footer>
-</div><div class="toast" id="toast" role="status"></div><script src="app.js"></script>
-</body></html>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" data-page="home" aria-label="Aurora, início">
+      <span class="brand-symbol">A</span>
+      <span>AURORA<span class="brand-light"> PS4</span></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <button class="nav-item active" data-page="home">Início</button>
+      <button class="nav-item" data-page="games">Jogos</button>
+      <button class="nav-item" data-page="favorites">Favoritos <span id="favoriteCount">0</span></button>
+      <button class="nav-item" data-page="settings">Configurações</button>
+    </nav>
+
+    <div class="top-actions">
+      <span class="online-dot"></span>
+      <span class="system-label">SYSTEM ONLINE</span>
+      <time id="clock">00:00</time>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section id="homePage" class="page active">
+      <section class="hero">
+        <div class="hero-content">
+          <span class="eyebrow"><span class="pulse-dot"></span> SUA CENTRAL DE JOGOS</span>
+          <h1>Seu universo.<br><span>Seu jogo.</span></h1>
+          <p>Todos os seus mundos em um só lugar.</p>
+          <button class="primary-btn" data-page="games">
+            <span>Explorar biblioteca</span><span aria-hidden="true">↗</span>
+          </button>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-orbit orbit-one"></div>
+          <div class="hero-orbit orbit-two"></div>
+          <div class="hero-core">A<span>+</span></div>
+          <div class="hero-caption">PLAY YOUR WAY</div>
+        </div>
+        <div class="hero-index">01 <span>/</span> 04</div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">SELEÇÃO AURORA</span>
+            <h2>Em destaque <span class="heading-mark">.</span></h2>
+          </div>
+          <button class="text-btn" data-page="games">Ver biblioteca ↗</button>
+        </div>
+        <div id="featuredGrid" class="games-grid featured-grid"></div>
+      </section>
+
+      <section class="quick-stats">
+        <div><span class="stat-number" id="totalCount">06</span><span class="stat-label">JOGOS NA BIBLIOTECA</span></div>
+        <div><span class="stat-number" id="homeFavoriteCount">00</span><span class="stat-label">SEUS FAVORITOS</span></div>
+        <div><span class="stat-number">∞</span><span class="stat-label">NOVAS POSSIBILIDADES</span></div>
+      </section>
+    </section>
+
+    <section id="gamesPage" class="page">
+      <div class="page-heading">
+        <span class="eyebrow">COLEÇÃO PESSOAL</span>
+        <h1>Biblioteca<span class="heading-mark">.</span></h1>
+        <p>Encontre seu próximo universo.</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="gameSearch" type="search" placeholder="Buscar jogo ou categoria..." autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+        <label class="filter-wrap">
+          <span class="sr-only">Filtrar por categoria</span>
+          <select id="categoryFilter">
+            <option value="all">Todas as categorias</option>
+            <option value="Ação">Ação</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Corrida">Corrida</option>
+            <option value="Arcade">Arcade</option>
+            <option value="RPG">RPG</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-chips" aria-label="Filtros rápidos">
+        <button class="chip active" data-category="all">Todos</button>
+        <button class="chip" data-category="Ação">Ação</button>
+        <button class="chip" data-category="Aventura">Aventura</button>
+        <button class="chip" data-category="Corrida">Corrida</button>
+        <button class="chip" data-category="Arcade">Arcade</button>
+        <button class="chip" data-category="RPG">RPG</button>
+      </div>
+
+      <div id="libraryGrid" class="games-grid"></div>
+      <p id="emptyState" class="empty-state" hidden>Nenhum jogo encontrado. Tente outro filtro.</p>
+    </section>
+
+    <section id="favoritesPage" class="page">
+      <div class="page-heading">
+        <span class="eyebrow">SUA SELEÇÃO</span>
+        <h1>Favoritos<span class="heading-mark">.</span></h1>
+        <p>Seus jogos preferidos, sempre por perto.</p>
+      </div>
+      <div id="favoritesGrid" class="games-grid"></div>
+      <p id="favoritesEmpty" class="empty-state" hidden>Você ainda não favoritou nenhum jogo. Toque na estrela de uma capa para adicioná-lo aqui.</p>
+    </section>
+
+    <section id="settingsPage" class="page">
+      <div class="page-heading">
+        <span class="eyebrow">PERSONALIZAÇÃO</span>
+        <h1>Configurações<span class="heading-mark">.</span></h1>
+        <p>Deixe o Aurora com a sua identidade.</p>
+      </div>
+
+      <div class="settings-card">
+        <div>
+          <h2>Cor de destaque</h2>
+          <p>Escolha a cor usada nos detalhes da interface.</p>
+        </div>
+        <div class="theme-options">
+          <button class="theme-swatch theme-green active" data-theme="green" aria-label="Tema verde neon" title="Verde neon"></button>
+          <button class="theme-swatch theme-blue" data-theme="blue" aria-label="Tema azul" title="Azul"></button>
+          <button class="theme-swatch theme-purple" data-theme="purple" aria-label="Tema roxo" title="Roxo"></button>
+          <button class="theme-swatch theme-orange" data-theme="orange" aria-label="Tema laranja" title="Laranja"></button>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div>
+          <h2>Preferências</h2>
+          <p>Seus favoritos e seu tema são salvos neste navegador.</p>
+        </div>
+        <button id="resetFavorites" class="secondary-btn">Limpar favoritos</button>
+      </div>
+
+      <div class="settings-card about-card">
+        <div>
+          <h2>Sobre o projeto</h2>
+          <p>Protótipo experimental inspirado em dashboards de consoles. Os jogos e o botão de iniciar são demonstrativos.</p>
+        </div>
+        <span class="version-tag">WEB PROTOTYPE · 1.0</span>
+      </div>
+    </section>
+
+    <section id="detailsPage" class="page details-page">
+      <button id="backButton" class="back-btn">← Voltar</button>
+      <div id="gameDetails" class="details-content"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span><span class="footer-dot"></span> AURORA INTERFACE</span>
+    <span>CONCEBIDO PARA JOGAR</span>
+    <span>PROTÓTIPO WEB</span>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
