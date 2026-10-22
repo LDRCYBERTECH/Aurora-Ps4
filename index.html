@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora PS4 — Protótipo</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+<header><div class="logo"><span>A</span> AURORA <b>PS4</b></div><nav><button class="active" data-view="início">Início</button><button data-view="jogos">Jogos</button><button data-view="favoritos">Favoritos</button><button data-view="categorias">Categorias</button><button data-view="configurações">Configurações</button></nav><div class="status"><i></i> PROTÓTIPO <time id="clock">00:00</time></div></header>
+<section class="intro"><div><small class="eyebrow">DASHBOARD • CONCEITO</small><h1 id="title">Sua biblioteca,<br><em>do seu jeito.</em></h1><p id="subtitle">Um novo ponto de partida para sua coleção de jogos.</p></div><div class="stats"><div><small>NA BIBLIOTECA</small><strong>06</strong></div><div><small>FAVORITOS</small><strong id="favcount">02</strong></div></div></section>
+<section class="feature"><div class="hero"><div class="planet"></div><div class="herotext"><label>DESTAQUE DA SEMANA</label><small>UMA AVENTURA ORIGINAL</small><h2>NEON<br><em>FRONTIER</em></h2><p>Explore um mundo além das estrelas.</p></div><span class="counter">CONCEITO<br><b>01 / 06</b></span></div><aside><small class="eyebrow">ESCOLHA RÁPIDA</small><h3>Continue explorando</h3><button class="quick" data-game="Neon Frontier"><span class="mini neon">NF</span><span><b>Neon Frontier</b><small>Aventura • Conceito</small></span><strong>▶</strong></button><button class="quick" data-game="Pixel Run"><span class="mini pixel">PR</span><span><b>Pixel Run</b><small>Arcade • Conceito</small></span><strong>▶</strong></button><button class="quick" data-game="Rota 9"><span class="mini route">09</span><span><b>Rota 9</b><small>Corrida • Conceito</small></span><strong>▶</strong></button></aside></section>
+<section class="library"><div class="libraryhead"><div><small class="eyebrow">SUA COLEÇÃO</small><h3 id="librarytitle">Jogos em destaque</h3></div><div class="tools"><input id="search" placeholder="Buscar jogo..." aria-label="Buscar jogo"><button id="all">VER TODOS ↗</button></div></div>
+<div class="grid" id="grid">
+<button class="game selected" data-name="Neon Frontier" data-cat="Aventura" data-fav="true"><span class="cover neon"><b>NF</b><small>NEON<br>FRONTIER</small></span><span class="meta"><b>Neon Frontier</b><small>Aventura</small></span><span class="heart">♥</span></button>
+<button class="game" data-name="Sombras" data-cat="Ação" data-fav="false"><span class="cover shadow"><b>SH</b><small>SOMBRAS</small></span><span class="meta"><b>Sombras</b><small>Ação • Conceito</small></span><span class="heart">♡</span></button>
+<button class="game" data-name="Rota 9" data-cat="Corrida" data-fav="true"><span class="cover route"><b>09</b><small>ROTA 9</small></span><span class="meta"><b>Rota 9</b><small>Corrida • Conceito</small></span><span class="heart">♥</span></button>
+<button class="game" data-name="Pixel Run" data-cat="Arcade" data-fav="false"><span class="cover pixel"><b>PR</b><small>PIXEL RUN</small></span><span class="meta"><b>Pixel Run</b><small>Arcade • Conceito</small></span><span class="heart">♡</span></button>
+<button class="game" data-name="Guardiões" data-cat="Fantasia" data-fav="false"><span class="cover guard"><b>G</b><small>GUARDIÕES</small></span><span class="meta"><b>Guardiões</b><small>Fantasia • Conceito</small></span><span class="heart">♡</span></button>
+<button class="game" data-name="Cidade Neon" data-cat="Ação" data-fav="false"><span class="cover city"><b>NC</b><small>CIDADE<br>NEON</small></span><span class="meta"><b>Cidade Neon</b><small>Ação • Conceito</small></span><span class="heart">♡</span></button>
+</div><p id="empty" hidden>Nenhum jogo encontrado nesta seção.</p></section>
+<footer><span><b class="key">X</b> SELECIONAR <b class="key">○</b> VOLTAR</span><span>PROTÓTIPO VISUAL • NÃO É UM PKG</span></footer>
+</div><div class="toast" id="toast" role="status"></div><script src="app.js"></script>
+</body></html>
